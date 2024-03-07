@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "file-upload-to-aws-s3",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev"
+  },
+  "devDependencies": {
+    "turbo": "latest"
+  },
+  "license": "ISC"
+}
