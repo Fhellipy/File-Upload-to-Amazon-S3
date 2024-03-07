@@ -1,7 +1,7 @@
 import {
-  FileType,
   useDeleteFileMutation,
   useFileListQuery,
+  type FileType,
 } from "@modules/home";
 import { AlertCircleIcon, DownloadIcon, TrashIcon } from "lucide-react";
 import toast from "react-hot-toast";
@@ -20,7 +20,7 @@ export function FileList() {
 
   if (fileListQuery.error) {
     return (
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col items-center gap-2">
         <AlertCircleIcon size={60} className="w-fit text-destructive" />
 
         <p>Error: {fileListQuery.error?.message}</p>
