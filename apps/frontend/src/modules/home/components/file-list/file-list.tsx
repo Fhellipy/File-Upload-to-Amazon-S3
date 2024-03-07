@@ -1,12 +1,6 @@
-import {
-  useDeleteFileMutation,
-  useFileListQuery,
-  type FileType,
-} from "@modules/home";
+import { useDeleteFileMutation, useFileListQuery } from "@modules/home";
 import { AlertCircleIcon, DownloadIcon, TrashIcon } from "lucide-react";
 import toast from "react-hot-toast";
-
-const EXTENSIONS_IMAGE = ["jpg", "jpeg", "png", "gif", "webp", "svg"];
 
 export function FileList() {
   const fileListQuery = useFileListQuery();
@@ -49,7 +43,11 @@ export function FileList() {
               key={file.key}
               className="flex flex-col items-center justify-between gap-2 rounded border bg-muted p-2 shadow sm:flex-row sm:items-center"
             >
-              <ContentRenderer file={file} />
+              <img
+                src={file.url}
+                alt={file.key}
+                className="h-28 w-28 border text-center text-sm"
+              />
 
               <div className="flex items-center gap-1">
                 <a href={file.url}>
@@ -75,21 +73,3 @@ export function FileList() {
     </div>
   );
 }
-
-type ContentRendererProps = {
-  file: FileType;
-};
-
-const ContentRenderer: React.FC<ContentRendererProps> = ({ file }) => {
-  if (EXTENSIONS_IMAGE.includes(file.extension)) {
-    return (
-      <img
-        src={file.url}
-        alt={file.key}
-        className="h-28 w-28 border text-center text-sm"
-      />
-    );
-  }
-
-  return <p className="m-0 w-full truncate p-0">{file.key}</p>;
-};

@@ -1,6 +1,7 @@
 import {
   Controller,
   Delete,
+  FileTypeValidator,
   Get,
   Injectable,
   Param,
@@ -24,7 +25,7 @@ export class UploadController {
       new ParseFilePipe({
         validators: [
           // new MaxFileSizeValidator({ maxSize: 1000 }),
-          // new FileTypeValidator({ fileType: 'image/png' }),
+          new FileTypeValidator({ fileType: /image\/(png|jpg|jpeg)/ }),
         ],
       }),
     )

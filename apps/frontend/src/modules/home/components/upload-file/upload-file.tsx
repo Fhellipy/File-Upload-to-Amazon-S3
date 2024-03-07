@@ -1,4 +1,7 @@
 import { useUploadMutation } from "@modules/home";
+import toast from "react-hot-toast";
+
+const EXTENSIONS_IMAGE = ["jpg", "jpeg", "png"];
 
 export function UploadFile() {
   const uploadMutate = useUploadMutation();
@@ -6,7 +9,18 @@ export function UploadFile() {
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
 
-    if (file) uploadMutate.mutate(file);
+    const extension = file?.name.split(".").pop();
+
+    if (file && EXTENSIONS_IMAGE.includes(extension || "")) {
+      uploadMutate.mutate(file);
+      e.target.value = "";
+
+      return;
+    }
+
+    toast.error(
+      "Extensão de arquivo inválida, permitido apenas imagens (.jpg, .jpeg ou .png)",
+    );
 
     e.target.value = "";
   };
