@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "check": "tsc --noEmit",
-    "build": "vite build --emptyOutDir && cp .htaccess dist",
-    "build:open": "vite build --emptyOutDir && cp .htaccess dist && vite preview --open",
+    "build": "vite build",
     "clean": "trash ./dist",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
