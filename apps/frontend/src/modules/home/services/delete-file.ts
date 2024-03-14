@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 export const deleteFile = async (key: string) => {
   const response = await toast.promise(
-    fetchApi(`/upload/file/${key}`, {
+    fetchApi(`/file/${key}`, {
       method: "DELETE",
     }),
     {
