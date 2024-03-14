@@ -9,13 +9,9 @@ export const deleteFile = async (key: string) => {
     {
       loading: "Excluindo arquivo...",
       success: "Arquivo excluído com sucesso!",
-      error: "Erro ao excluir arquivo!",
+      error: error => error.message || "Erro ao excluir arquivo",
     },
   );
-
-  if (!response.ok) {
-    throw new Error("An error occurred while deleting the file");
-  }
 
   return response;
 };

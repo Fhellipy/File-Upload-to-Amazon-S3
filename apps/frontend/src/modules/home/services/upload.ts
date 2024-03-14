@@ -14,7 +14,7 @@ export async function upload(file: File) {
     {
       loading: "Upload em progresso...",
       success: "Upload concluído com sucesso!",
-      error: "Erro ao fazer upload do arquivo!",
+      error: error => error.message || "Erro ao fazer upload",
     },
   );
 }
