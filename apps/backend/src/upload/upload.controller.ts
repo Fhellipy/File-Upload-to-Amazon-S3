@@ -13,12 +13,12 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadService } from './upload.service';
 
-@Controller('upload')
+@Controller()
 @Injectable()
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}
 
-  @Post()
+  @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
   async uploadFile(
     @UploadedFile(
@@ -36,13 +36,11 @@ export class UploadController {
 
   @Get('list')
   async getAllFiles() {
-    const files = this.uploadService.getAllFiles();
-
-    return files;
+    return this.uploadService.getAllFiles();
   }
 
   @Delete('file/:key')
-  async getFile(@Param('key') key: string) {
-    return this.uploadService.deleteFile(key);
+  async delete(@Param('key') key: string) {
+    return this.uploadService.delete(key);
   }
 }
